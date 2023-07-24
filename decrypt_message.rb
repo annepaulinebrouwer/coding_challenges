@@ -10,9 +10,7 @@ def encrypt(word)
   word.bytes.map do |num|
     num += previous_num
     previous_num = num
-    until (97..122).include?(num)
-        num -= 26
-    end
+    num -= 26 until (97..122).include?(num)
     num.chr
   end.join
 end
@@ -29,9 +27,7 @@ def decrypt(word)
   word.bytes.map do |num|
     num -= previous_num
     previous_num += num
-    until (97..122).include?(num)
-      num += 26
-    end
+    num += 26 until (97..122).include?(num)
     num.chr
   end.join
 end
@@ -41,6 +37,6 @@ end
 # p encrypt("crime")
 # p encrypt("encyclopedia")
 
-word = "crime"
+word = 'crime'
 p word == decrypt(encrypt(word))
-p decrypt(encrypt("encyclopedia"))
+p decrypt(encrypt('encyclopedia'))
