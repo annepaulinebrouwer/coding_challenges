@@ -7,6 +7,10 @@ class IdentificationNumberTest < Minitest::Test
     refute IdentificationNumber.valid?(nil)
   end
 
+  def test_negative_number_can_not_be_valid
+    refute IdentificationNumber.valid?("-055444285")
+  end
+
   def test_single_digit_strings_can_not_be_valid
     refute IdentificationNumber.valid?("1")
   end
